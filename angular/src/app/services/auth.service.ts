@@ -1,22 +1,22 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { Observable, BehaviorSubject } from  'rxjs';
+import { Observable, BehaviorSubject } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { IUserModel } from '../interfaces/IUserModel';
 
 @Injectable({
-  providedIn: 'root'
+    providedIn: 'root'
 })
 export class AuthService {
-  private host: string = '';
+    private host: string = '';
 
-  constructor(private http: HttpClient) { }
-  getSession(): Observable<IUserModel> {
-    return this.http.get<IUserModel>("/auth/user");
-  }
+    constructor(private http: HttpClient) { }
+    getSession(): Observable<IUserModel> {
+        return this.http.get<IUserModel>("/auth/user");
+    }
 
-  getStatus(): Observable<string> {
-    return this.http.get<string>("/loggedIn");
-  } 
+    getStatus(): Observable<string> {
+        return this.http.get<string>("/loggedIn");
+    }
 
 }

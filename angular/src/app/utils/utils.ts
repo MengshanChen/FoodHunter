@@ -18,7 +18,7 @@ export function ConvertRestaurantLsit(v1: IRestaurantTagListModel[]): RTagListV2
     return v2;
 }
 
-export async function Sleep(ms){
+export async function Sleep(ms) {
     await _sleep(ms);
 }
 

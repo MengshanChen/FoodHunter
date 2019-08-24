@@ -1,6 +1,6 @@
 export enum TabId {
-  currentTagPriorityTab,
-  reviewTab,
-  collectionTab,
-  tagSelectionTab,
+	currentTagPriorityTab,
+	reviewTab,
+	collectionTab,
+	tagSelectionTab,
 }

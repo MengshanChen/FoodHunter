@@ -8,20 +8,20 @@ import { IFavoriteListModel } from '../interfaces/IFavoriteListModel';
 import { IFoodieTagListModel } from '../interfaces/IFoodieTagListModel';
 
 @Injectable({
-  providedIn: 'root'
+    providedIn: 'root'
 })
 export class ProfileService {
-  private foodieurl = '/foodie/';
-  private tagListUrl = '/tagList/';
-  constructor(private http: HttpClient) { }
+    private foodieurl = '/foodie/';
+    private tagListUrl = '/tagList/';
+    constructor(private http: HttpClient) { }
 
-  getProfileByFoodieID(userID: number): Observable<IFoodieModel> {
-    console.log(userID);
-    return this.http.get<IFoodieModel>(this.foodieurl + userID);
-  }
+    getProfileByFoodieID(userID: number): Observable<IFoodieModel> {
+        console.log(userID);
+        return this.http.get<IFoodieModel>(this.foodieurl + userID);
+    }
 
-  getFoodieTagListByFoodieID(userID: number): Observable<IFoodieTagListModel> {
-    return this.http.get<IFoodieTagListModel>(this.tagListUrl + userID);
-  }
+    getFoodieTagListByFoodieID(userID: number): Observable<IFoodieTagListModel> {
+        return this.http.get<IFoodieTagListModel>(this.tagListUrl + userID);
+    }
 }
 

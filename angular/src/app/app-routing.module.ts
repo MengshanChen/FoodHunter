@@ -16,31 +16,31 @@ import { CurrentTagPriorityComponent } from './current-tag-priority/current-tag-
 
 
 const routes: Routes = [
-  { path: '', redirectTo: '/search', pathMatch: 'full' },
-  { path: 'login', component: LoginComponent },
-  { path: 'register', component: RegisterComponent },
-  { path: 'restaurants/:rID', component: RestaurantComponent },
-  { path: 'addreview', component: AddReviewComponent },
-  { path: 'profile', component: ProfileComponent },
-  { path: 'currentTagPriority', component: CurrentTagPriorityComponent},
-  { path: 'collection', component: CollectionComponent },
-  { path: 'review', component: ReviewComponent },
-  { path: 'search', component: SearchComponent},
-  { path: 'filter', component: FilterComponent},
-  { path: 'tagSelection', component: TagSelectionComponent},
-  { path: 'recommendationList', component: RecommendationListComponent},
-  { path: '404', component: NotFoundComponent },
-  { path: '**', redirectTo: '/404' },
+	{ path: '', redirectTo: '/search', pathMatch: 'full' },
+	{ path: 'login', component: LoginComponent },
+	{ path: 'register', component: RegisterComponent },
+	{ path: 'restaurants/:rID', component: RestaurantComponent },
+	{ path: 'addreview', component: AddReviewComponent },
+	{ path: 'profile', component: ProfileComponent },
+	{ path: 'currentTagPriority', component: CurrentTagPriorityComponent },
+	{ path: 'collection', component: CollectionComponent },
+	{ path: 'review', component: ReviewComponent },
+	{ path: 'search', component: SearchComponent },
+	{ path: 'filter', component: FilterComponent },
+	{ path: 'tagSelection', component: TagSelectionComponent },
+	{ path: 'recommendationList', component: RecommendationListComponent },
+	{ path: '404', component: NotFoundComponent },
+	{ path: '**', redirectTo: '/404' },
 ];
 
 /////////////////////////////////////
 /*********** FOR DEPLOY ************/
-export const routing = RouterModule.forRoot(routes, {useHash:true});
+export const routing = RouterModule.forRoot(routes, { useHash: true });
 
 ////////////////////////////////
 /*********** LOCAL ************/
 /*@NgModule({
-  imports: [RouterModule.forRoot(routes)],
-  exports: [RouterModule]
+	imports: [RouterModule.forRoot(routes)],
+	exports: [RouterModule]
 })
 export class AppRoutingModule { }*/
