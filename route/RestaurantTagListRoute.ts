@@ -1,51 +1,51 @@
 import * as express from 'express';
-import {RestaurantTagListModel} from '../model/RestaurantTagListModel';
+import { RestaurantTagListModel } from '../model/RestaurantTagListModel';
 
 class RestaurantTagList {
-    
-    public rTagList:RestaurantTagListModel;
+
+    public rTagList: RestaurantTagListModel;
     private idGenerator: number;
-    
+
     constructor() {
         this.rTagList = new RestaurantTagListModel();
         this.idGenerator = 1000;
     }
 
     public registerrTagListRoutes(router: express.Router) {
-      this.routes(router);
+        this.routes(router);
     }
-    
+
     private routes(router: express.Router): void {
-      router.get('/rtags', (req, res) => {
-        var id = req.params.restaurantID;
-        console.log('restaurant id:' + id);
-        this.rTagList.retrieveAll(res); 
-      });
+        router.get('/rtags', (req, res) => {
+            var id = req.params.restaurantID;
+            console.log('restaurant id:' + id);
+            this.rTagList.retrieveAll(res);
+        });
 
-      router.get('/rtags/:restaurantID', (req, res) => {
-        var id = req.params.restaurantID;
-        console.log('restaurant id:' + id);
-        this.rTagList.retrieverTagListDetails(res, {restaurantID: id}); 
-      });
+        router.get('/rtags/:restaurantID', (req, res) => {
+            var id = req.params.restaurantID;
+            console.log('restaurant id:' + id);
+            this.rTagList.retrieverTagListDetails(res, { restaurantID: id });
+        });
 
-      router.post('/rtags', (req, res) => {
-        var body = req.body;
-        body.rtaglistID = this.idGenerator;
-        this.idGenerator ++;
-        this.rTagList.addNewrTagList(res, body); 
-      });
-  
-      router.put('/rtags/:restaurantID', (req, res) => {
-        var id = req.params.restaurantID;
-        console.log('restaurant id:' + id);
-        this.rTagList.updateTagList(res, {restaurantID: id}, req.body);
-      });
-  
-      router.delete('/rtags/:restaurantID', (req, res) => {
-        var id = req.params.restaurantID;
-        console.log('restaurant id:' + id);
-        this.rTagList.deleteTagList(res, {restaurantID: id}); 
-      });
+        router.post('/rtags', (req, res) => {
+            var body = req.body;
+            body.rtaglistID = this.idGenerator;
+            this.idGenerator++;
+            this.rTagList.addNewrTagList(res, body);
+        });
+
+        router.put('/rtags/:restaurantID', (req, res) => {
+            var id = req.params.restaurantID;
+            console.log('restaurant id:' + id);
+            this.rTagList.updateTagList(res, { restaurantID: id }, req.body);
+        });
+
+        router.delete('/rtags/:restaurantID', (req, res) => {
+            var id = req.params.restaurantID;
+            console.log('restaurant id:' + id);
+            this.rTagList.deleteTagList(res, { restaurantID: id });
+        });
     }
 }
-export {RestaurantTagList};
+export { RestaurantTagList };

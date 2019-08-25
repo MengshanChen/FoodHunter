@@ -19,13 +19,13 @@ class Foodie {
     }
 
     // configure API endpoints.
-    private routes(router: Router): void {       
+    private routes(router: Router): void {
         // create foodie
         router.post("/foodie", (req, res) => {
             console.log(req.body);
             var user: any = req.body;
             user.userID = this.idGenerator;
-            this.idGenerator ++;
+            this.idGenerator++;
             this.Foodie.createUser(res, user);
         });
 
@@ -40,10 +40,10 @@ class Foodie {
         router.get("/foodie/:userID", (req, res) => {
             var userId: any = req.params.userID;
             console.log("Query single user with id: ", userId);
-            if(isNaN(userId)){
+            if (isNaN(userId)) {
                 console.log("it is a NaN");
             }
-            else{
+            else {
                 this.Foodie.getUserByID(res, userId);
             }
         });
@@ -64,7 +64,7 @@ class Foodie {
         });
     }
 }
-export {Foodie};
+export { Foodie };
 
 class RestaurantOwner {
 
@@ -85,7 +85,7 @@ class RestaurantOwner {
             console.log(req.body);
             var user: any = req.body;
             user.userID = this.idGenerator;
-            this.idGenerator ++;
+            this.idGenerator++;
             this.Owner.createUser(res, user);
         });
 
@@ -112,7 +112,7 @@ class RestaurantOwner {
         });
     }
 }
-export {RestaurantOwner};
+export { RestaurantOwner };
 
 class Admin {
 
@@ -136,7 +136,7 @@ class Admin {
             console.log(req.body);
             var user: any = req.body;
             user.userID = this.idGenerator;
-            this.idGenerator ++;
+            this.idGenerator++;
             this.Admin.createUser(res, user);
         });
 
@@ -151,23 +151,23 @@ class Admin {
         // userType can be: restaurantOwners, admin, foodie ,user(all types)
         router.get("/admin/users/:userType", (req, res) => {
             var userType: any = req.params.userType;
-            if(userType === "restaurantOwners"){
+            if (userType === "restaurantOwners") {
                 console.log("Get all restaurantOwners: ", userType);
                 this.Admin.getAllRestaurantOwners(res);
             }
-            else if(userType === "admin"){
+            else if (userType === "admin") {
                 console.log("Get all admins: ", userType);
                 this.Admin.getAllAdmins(res);
             }
-            else if(userType === "foodie"){
+            else if (userType === "foodie") {
                 console.log("Get all foodies: ", userType);
                 this.Admin.getAllFoodies(res, userType);
             }
-            else if(userType === "user"){
+            else if (userType === "user") {
                 console.log("get all users");
                 this.Admin.getAllUsers(res);
             }
-            else{
+            else {
                 console.log("unknown user type");
                 res.json("unkown user type");
             }
@@ -203,4 +203,4 @@ class Admin {
         });
     }
 }
-export {Admin};
+export { Admin };

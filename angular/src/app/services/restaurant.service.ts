@@ -11,7 +11,8 @@ import { IRestaurantModel } from '../interfaces/IRestaurantModel';
 
 export class RestaurantService {
 
-    private url = '/restaurant';
+    private host = '127.0.0.1:8080';
+    private url = this.host + '/restaurant';
     constructor(private http: HttpClient) { }
     getAll(): Observable<IRestaurantModel[]> {
         return this.http.get<IRestaurantModel[]>(this.url);

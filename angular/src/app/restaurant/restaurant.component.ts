@@ -3,7 +3,6 @@ import { IRestaurantModel } from '../interfaces/IRestaurantModel';
 import { RestaurantService } from '../services/restaurant.service';
 import { ActivatedRoute } from '@angular/router';
 import { CollectionService } from '../services/collection.service';
-import { AuthService } from '../services/auth.service';
 
 @Component({
     selector: 'app-restaurant',
@@ -19,7 +18,6 @@ export class RestaurantComponent implements OnInit {
     rID: number;
 
     constructor(
-        private authService: AuthService,
         private restaurantService: RestaurantService,
         private collectionService: CollectionService,
         private route: ActivatedRoute
@@ -27,11 +25,7 @@ export class RestaurantComponent implements OnInit {
     }
 
     ngOnInit() {
-        this.authService.getSession().subscribe(
-            data => {
-                this.currentUserID = data.userID;
-                console.log('in restaurant com, get user:' + this.currentUserID);
-            });
+        this.currentUserID = 1;
         this.addCollectionClicked = false;
         this.addCollectionSuccessOrNot = false;
         this.restaurantService.getByID(this.route.snapshot.params.rID).subscribe(

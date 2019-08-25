@@ -25,7 +25,7 @@ class Tag {
             console.log(req.body);
             var tag: any = req.body;
             tag.tagID = this.idGenerator;
-            this.idGenerator ++;
+            this.idGenerator++;
             this.Tag.createTag(res, tag);
         });
 
@@ -37,14 +37,14 @@ class Tag {
 
         // get tag by id
         router.get("/tag/:tagID", (req, res) => {
-            var tagId: number = req.params.tagID;
+            var tagId: number = +req.params.tagID;
             console.log("get tag by tagID:", tagId);
             this.Tag.getTagByTagID(res, tagId);
         });
 
         // update tag by tagId
         router.put("/tag/:tagID", (req, res) => {
-            var tagId: number = req.params.tagID;
+            var tagId: number = +req.params.tagID;
             var tagBody: any = req.body;
             console.log("update tag by tagID:", tagId);
             this.Tag.updateTagByTagID(res, tagId, tagBody);
@@ -52,10 +52,10 @@ class Tag {
 
         // delete tag by tagId
         router.delete("/tag/:tagID", (req, res) => {
-            var tagId: number = req.params.tagID;
+            var tagId: number = +req.params.tagID;
             console.log("delete tag by tagID:", tagId);
             this.Tag.deleteTagByTagID(res, tagId);
         });
     }
 }
-export {Tag};
+export { Tag };

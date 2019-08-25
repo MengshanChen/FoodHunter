@@ -1,5 +1,5 @@
 import * as express from 'express';
-import {ReviewModel} from '../model/ReviewModel'
+import { ReviewModel } from '../model/ReviewModel'
 
 // Creates and configures an ExpressJS web server.
 class Review {
@@ -23,18 +23,18 @@ class Review {
             this.Reviews.getAllReviews(res);
         });
 
-        router.get('/review/:reviewID',(req, res) => {
-            var reviewID = req.params.reviewID;
+        router.get('/review/:reviewID', (req, res) => {
+            var reviewID = +req.params.reviewID;
             this.Reviews.getReviewByID(reviewID, res);
         });
 
-        router.delete('/review/:reviewID',(req, res) => {
-            var reviewID = req.params.reviewID;
+        router.delete('/review/:reviewID', (req, res) => {
+            var reviewID = +req.params.reviewID;
             this.Reviews.deleteReviewByID(reviewID, res);
         });
 
-        router.put('/review/:reviewID',(req, res) => {
-            var reviewID = req.params.reviewID;
+        router.put('/review/:reviewID', (req, res) => {
+            var reviewID = +req.params.reviewID;
             var reviewBody = req.body;
             this.Reviews.updateReview(reviewID, reviewBody, res);
         });
@@ -42,10 +42,10 @@ class Review {
         router.post('/review', (req, res) => {
             var review = req.body;
             review.reviewID = this.idGenerator;
-            this.idGenerator ++;
+            this.idGenerator++;
             this.Reviews.createReview(review, res);
         });
     }
 }
 
-export {Review};
+export { Review };

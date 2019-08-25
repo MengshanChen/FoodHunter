@@ -1,6 +1,6 @@
 // create foodhunter db for FoodHunter Porject
-db = db.getSiblingDB("testapp")
-var dbname = 'testapp'
+var dbname = 'foodhunter'
+db = db.getSiblingDB(dbname)
 
 /************ Users **********/
 db.createCollection('user')

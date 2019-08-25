@@ -25,7 +25,7 @@ class FoodieTagList {
         router.post("/tagList", (req, res) => {
             var list: any = req.body;
             list.tagListID = this.idGenerator;
-            this.idGenerator ++;
+            this.idGenerator++;
             console.log(list);
             this.TagList.createTagList(res, list);
         });
@@ -38,14 +38,14 @@ class FoodieTagList {
 
         // get list by userId
         router.get("/tagList/:userID", (req, res) => {
-            var userId: number = req.params.userID;
+            var userId: number = +req.params.userID;
             console.log("get foodieTagList by userId:", userId);
             this.TagList.getTagListByFoodieID(res, userId);
         });
-        
+
         // update list by userId
-        router.put("/tagList/:userID",  (req, res) => {
-            var userId: number = req.params.userID;
+        router.put("/tagList/:userID", (req, res) => {
+            var userId: number = +req.params.userID;
             var listBody: any = req.body;
             console.log("update taglist by userID:", userId);
             this.TagList.updateTagListByFoodieID(res, userId, listBody);
@@ -53,10 +53,10 @@ class FoodieTagList {
 
         // delete list by userId
         router.delete("/tagList/:userID", (req, res) => {
-            var userId: number = req.params.userID;
+            var userId: number = +req.params.userID;
             console.log("delete tagList by userID:", userId);
             this.TagList.deleteTagListByFoodieID(res, userId);
         });
     }
 }
-export {FoodieTagList};
+export { FoodieTagList };

@@ -1,10 +1,4 @@
-
-import * as path from 'path';
 import * as express from 'express';
-import * as logger from 'morgan';
-import * as mongodb from 'mongodb';
-import * as url from 'url';
-import * as bodyParser from 'body-parser';
 
 import { ApplicationFormModel } from '../model/ApplicationFormModel';
 
@@ -28,28 +22,27 @@ class ApplicationForm {
     private routes(router: express.Router): void {
         //get by id
         router.get('/applicationForm/:applicationFormID', (req, res) => {
-            var applicationFormID = req.params.applicationFormID;
+            var applicationFormID: number = +req.params.applicationFormID;
             console.log('try to get applicationFormID:', applicationFormID);
             this.applicationForm.getApplicationFormByID(res, applicationFormID);
         });
 
         //get all
         router.get('/applicationForm', (req, res) => {
-            var applicationFormID = req.params.applicationFormID;
             console.log('try to get all applicationForm');
             this.applicationForm.getAllApplicationForm(res);
         });
 
         //delete
         router.delete('/applicationForm/:applicationFormID', (req, res) => {
-            var applicationFormID = req.params.applicationFormID;
+            var applicationFormID: number = +req.params.applicationFormID;
             console.log('try to delete applicationFormID:', applicationFormID);
             this.applicationForm.deleteApplicationForm(res, applicationFormID);
         });
 
         //update
         router.put('/applicationForm/:applicationFormID', (req, res) => {
-            var applicationFormID = req.params.applicationFormID;
+            var applicationFormID: number = +req.params.applicationFormID;
             console.log('try to update applicationFormID:', applicationFormID);
             var newapplicationForm = req.body;
             this.applicationForm.updateApplicationForm(res, applicationFormID, newapplicationForm);
@@ -59,7 +52,7 @@ class ApplicationForm {
         router.post('/applicationForm', (req, res) => {
             var newapplicationForm = req.body;
             newapplicationForm.formID = this.idGenerator;
-            this.idGenerator ++; 
+            this.idGenerator++;
             console.log('try to create:', newapplicationForm);
             this.applicationForm.createApplicationForm(res, newapplicationForm);
         });

@@ -1,5 +1,3 @@
-
-import * as path from 'path';
 import * as express from 'express';
 import { RecommendationListModel } from '../model/RecommendationListModel';
 
@@ -23,40 +21,40 @@ class RecommendationList {
     private routes(router: express.Router): void {
         //get by id
         router.get('/recommendationlist/:recommendationlistID', (req, res) => {
-            var recommendationlistID = req.params.recommendationlistID;
+            var recommendationlistID = +req.params.recommendationlistID;
             console.log('try to get listID:', recommendationlistID);
             this.recommendationList.getrecommendationListByID(res, recommendationlistID);
         });
 
         //get by tagListid
         router.get('/recommendationlist/tagList/:tagListID', (req, res) => {
-            var taglistID = req.params.tagListID;
+            var taglistID: number = +req.params.tagListID;
             console.log('try to get taglistID:', taglistID);
             this.recommendationList.getrecommendationListByTagListID(res, taglistID);
         });
 
-        router.delete('/recommendationlist/:recommendationlistID', (req, res) => {         
-            var recommendationlistID = req.params.recommendationlistID;
+        router.delete('/recommendationlist/:recommendationlistID', (req, res) => {
+            var recommendationlistID: number = +req.params.recommendationlistID;
             console.log('try to delete listID:', recommendationlistID);
             this.recommendationList.deleteRecommendationList(res, recommendationlistID);
         });
 
-        router.put('/recommendationlist/:recommendationlistID', (req, res) => {            
-            var recommendationlistID = req.params.recommendationlistID;
+        router.put('/recommendationlist/:recommendationlistID', (req, res) => {
+            var recommendationlistID: number = +req.params.recommendationlistID;
             console.log('try to update:', recommendationlistID);
             var newrecommendationList = req.body;
             this.recommendationList.updateRecommendationList(res, recommendationlistID, newrecommendationList);
         });
 
-        router.put('/recommendationlist/tagList/:tagListID', (req, res) => {            
-            var tagListID = req.params.tagListID;
+        router.put('/recommendationlist/tagList/:tagListID', (req, res) => {
+            var tagListID: number = +req.params.tagListID;
             console.log('try to update:', tagListID);
             var newrecommendationList = req.body;
             console.log('get list from service in route:', newrecommendationList);
             this.recommendationList.updateRecommendationListByTagListID(res, tagListID, newrecommendationList);
         });
 
-        router.post('/recommendationlist', (req, res) => {          
+        router.post('/recommendationlist', (req, res) => {
             var newrecommendationList = req.body;
             newrecommendationList.recommendationlistID = this.idGenerator + newrecommendationList.foodietaglistID;
             console.log('try to create:', newrecommendationList.recommendationlistID);

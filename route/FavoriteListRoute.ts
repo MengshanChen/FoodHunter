@@ -1,7 +1,5 @@
 import * as express from 'express';
-
-//connect to the model 
-import {FavoriteListModel} from '../model/FavoriteListModel'
+import { FavoriteListModel } from '../model/FavoriteListModel'
 
 // Creates and configures an ExpressJS web server.
 class FavoriteList {
@@ -25,23 +23,23 @@ class FavoriteList {
             this.FavoriteLists.getAllFavoriteLists(res);
         });
 
-        router.get('/favoriteList/:favoriteListID',(req, res) => {
-            var favoriteListID = req.params.favoriteListID;
+        router.get('/favoriteList/:favoriteListID', (req, res) => {
+            var favoriteListID: number = +req.params.favoriteListID;
             this.FavoriteLists.getFavoriteListByID(favoriteListID, res);
         });
 
-        router.get('/favoriteList/user/:userID',(req, res) => {
-            var userID = req.params.userID;
+        router.get('/favoriteList/user/:userID', (req, res) => {
+            var userID: number = +req.params.userID;
             this.FavoriteLists.getFavoriteListByUserID(userID, res);
         });
 
-        router.delete('/favoriteList/:favoriteListID',(req, res) => {
-            var favoriteListID = req.params.favoriteListID;
+        router.delete('/favoriteList/:favoriteListID', (req, res) => {
+            var favoriteListID: number = +req.params.favoriteListID;
             this.FavoriteLists.deleteFavoriteListByID(favoriteListID, res);
         });
 
-        router.put('/favoriteList/:favoriteListID',(req, res) => {
-            var favoriteListID = req.params.favoriteListID;
+        router.put('/favoriteList/:favoriteListID', (req, res) => {
+            var favoriteListID: number = +req.params.favoriteListID;
             var favoriteListBody = req.body;
             this.FavoriteLists.updateFavoriteList(favoriteListID, favoriteListBody, res);
         });
@@ -49,10 +47,10 @@ class FavoriteList {
         router.post('/favoriteList', (req, res) => {
             var favoriteList = req.body;
             favoriteList.favoriteListID = this.idGenerator;
-            this.idGenerator ++;
+            this.idGenerator++;
             this.FavoriteLists.createFavoriteList(favoriteList, res);
         });
     }
 }
 
-export {FavoriteList};
+export { FavoriteList };
