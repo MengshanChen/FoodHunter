@@ -1,6 +1,4 @@
-import { IUserModel } from "./IUserModel";
-
-interface IFoodieModel extends IUserModel {
+interface IFoodieModel{
     tagListID: number;
     favoriteListID: number;
     avatar: string;

@@ -1,6 +1,4 @@
-import Mongoose = require("mongoose");
-
-interface IUserModel extends Mongoose.Document {
+interface IUserModel {
     userID: number;
     userName: string;
     password: string;

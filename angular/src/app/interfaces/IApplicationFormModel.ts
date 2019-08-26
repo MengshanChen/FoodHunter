@@ -1,6 +1,4 @@
-import Mongoose = require("mongoose");
-
-interface IApplicationFormModel extends Mongoose.Document {
+interface IApplicationFormModel {
     formID: number,
     restaurantID: number,
     userID: number,

@@ -13,6 +13,10 @@ export class RestaurantService {
         private http: HttpClient
     ) { }
 
+    getAll(): Observable<IRestaurantModel[]> {
+        return this.http.get<IRestaurantModel[]>(this.url);
+    }
+    
     getByID(rID: number): Observable<IRestaurantModel> {
         return this.http.get<IRestaurantModel>(this.url + '/' + rID);
     }
