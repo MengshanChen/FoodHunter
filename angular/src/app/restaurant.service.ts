@@ -7,7 +7,7 @@ import { IRestaurantModel } from './interfaces/IRestaurantModel';
     providedIn: 'root'
 })
 export class RestaurantService {
-    private host = 'localhost:8080';
+    private host = 'http://localhost:8080';
     private url = this.host + '/restaurant';
     constructor(
         private http: HttpClient

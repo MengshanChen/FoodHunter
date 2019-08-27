@@ -27,29 +27,15 @@ class App {
     // configure Express middleware.
     private middleware(): void {
         let allowCrossDomain = function (req, res, next) {
-            res.header('Access-Control-Allow-Origin', "*");
-            res.header('Access-Control-Allow-Methods', 'GET,PUT,POST,DELETE');
-            res.header('Access-Control-Allow-Headers', 'Content-Type');
+            res.setHeader('Access-Control-Allow-Origin', "*");
+            res.setHeader('Access-Control-Allow-Methods', 'GET,PUT,POST,DELETE');
+            res.setHeader('Access-Control-Allow-Headers', 'Access-Control-Allow-Origin, Content-Type, Accept, Accept-Language, Origin, User-Agent');
             next();
         }
+        this.expressApp.use(allowCrossDomain);
         this.expressApp.use(logger("dev"));
         this.expressApp.use(bodyParser.json());
         this.expressApp.use(bodyParser.urlencoded({ extended: false }));
-        this.expressApp.use(allowCrossDomain);
-    }
-
-    //////////////////////////////////////////////////
-    //*************** google login ******************/
-    private validateAuth(req, res, next): void {
-        // && req.cookies.user_sid  => not allow the user log in two different account in the same browser
-        if (req.isAuthenticated()) {
-            console.log("user is authenticated");
-            console.log("validate user id: " + req.user.id);
-            console.log("validate email: " + req.user.emails[0].value);
-            return next();
-        }
-        console.log("user is not authenticated");
-        res.redirect('/');
     }
 
     // configure API endpoints.
